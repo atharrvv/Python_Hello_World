@@ -65,9 +65,9 @@ jobs:
       # Build and push Docker image
       - name: Build and push Docker image
         run: |
-          docker build -t atharrvv/python-hello-world .
-          docker tag python-hello-world:latest atharrvv/python-hello-world:latest
-          docker push atharrvv/python-hello-world:latest
+          docker build -t eatherv/python-hello-world .
+          docker tag python-hello-world:latest eatherv/python-hello-world:latest
+          docker push eatherv/python-hello-world:latest
 
       # Deploy
       - name: Deploy
