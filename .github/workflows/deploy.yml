@@ -1,4 +1,3 @@
-
 name: Deploy
 
 on:
@@ -9,18 +8,20 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    stages:
-      - Prepare Environment
-      - Deploy
-
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Install Python
+      - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: 3.9
 
-      - name: Deploy to cloud platform
-        run: << deployment script >>
+      - name: Deploy to Production
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            # Deploy script here
