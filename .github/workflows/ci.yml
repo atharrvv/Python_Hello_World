@@ -1,0 +1,10 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+tasks:
+  build:
+    run: python -m unittest
