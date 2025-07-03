@@ -1,20 +1,22 @@
-name: CI
-
+name: Python CI
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
 
-tasks:
+jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python 3.9
+      - uses: actions/checkout@v4
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.11'
       - name: Install dependencies
-        run: pip install --upgrade pip && pip install -r requirements.txt
+        run: |
+          if [ -e requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
       - name: Run tests
-        run: pytest
+        run: python3 -m unittest discover
