@@ -3,35 +3,27 @@ name: Python Build
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-
-      - name: Build package
+      - name: Build
         run: |
           if [ -f pyproject.toml ]; then
             pip install build && python -m build
-          else
+          elif [ -f setup.py ]; then
             pip install wheel && python setup.py sdist bdist_wheel
           fi
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
-          name: python-package
+          name: dist
           path: dist/
     
