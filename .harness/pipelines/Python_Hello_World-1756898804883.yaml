@@ -18,7 +18,7 @@ pipeline:
                   identifier: Echo_Welcome_Message
                   spec:
                     shell: Sh
-                    command: ls /home/ubunut/
+                    command: ls /home/ubuntu/
           platform:
             os: Linux
             arch: Amd64
