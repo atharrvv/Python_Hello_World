@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Python_Hello_World_1756898810262-pr-trigger-input-set
+  identifier: Build_Python_Hello_World_1756898810262prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_Python_Hello_World_1756898810262
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
