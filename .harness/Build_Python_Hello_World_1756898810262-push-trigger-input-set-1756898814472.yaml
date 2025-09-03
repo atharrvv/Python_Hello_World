@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Python_Hello_World_1756898810262-push-trigger-input-set
+  identifier: Build_Python_Hello_World_1756898810262pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_Python_Hello_World_1756898810262
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
